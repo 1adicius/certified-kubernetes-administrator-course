@@ -172,20 +172,21 @@
       <br>Host path: /pv/data-analytics</br>
 
       <details>
+
      
-       ```
-       apiVersion: v1
-       kind: PersistentVolume
-       metadata:
-         name: pv-analytics
-       spec:
-         capacity:
-           storage: 100Mi
-         volumeMode: Filesystem
-         accessModes:
-           - ReadWriteMany
-         hostPath:
-             path: /pv/data-analytics
-       ```
+  create below PV: 
+       
+           apiVersion: v1
+           kind: PersistentVolume
+           metadata:
+             name: pv-analytics
+           spec:
+             capacity:
+               storage: 100Mi
+             accessModes:
+               - ReadWriteMany
+             hostPath:
+                 path: /pv/data-analytics
+    
        </details>
        
