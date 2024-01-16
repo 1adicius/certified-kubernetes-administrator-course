@@ -111,47 +111,47 @@
 
         <details>
     
-  For Kubernetes Version <=1.17
+      For Kubernetes Version <=1.17
  
-  ```
-     kubectl create deployment nginx-deploy --image=nginx:1.16 --replicas=1
-     kubectl rollout history deployment nginx-deploy
-     kubectl set image deployment/nginx-deploy nginx=nginx:1.17 --record
-     kubectl rollout history deployment nginx-deploy
-  ```
+     ```
+         kubectl create deployment nginx-deploy --image=nginx:1.16 --replicas=1
+         kubectl rollout history deployment nginx-deploy
+         kubectl set image deployment/nginx-deploy nginx=nginx:1.17 --record
+         kubectl rollout history deployment nginx-deploy
+      ```
  
-  For Kubernetes Version >1.17
+      For Kubernetes Version >1.17
  
-  ```
-     kubectl create deployment nginx-deploy --image=nginx:1.16 --dry-run=client -o yaml > deploy.yaml
-   
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-      name: nginx-deploy
-    spec:
-      replicas: 1
-      selector:
-        matchLabels:
-          app: nginx-deploy
-      strategy: {}
-      template:
+      ```
+         kubectl create deployment nginx-deploy --image=nginx:1.16 --dry-run=client -o yaml > deploy.yaml
+       
+        apiVersion: apps/v1
+        kind: Deployment
         metadata:
-          creationTimestamp: null
-          labels:
-            app: nginx-deploy
+          name: nginx-deploy
         spec:
-          containers:
-          - image: nginx:1.16
-            name: nginx
-  ```
+          replicas: 1
+          selector:
+            matchLabels:
+              app: nginx-deploy
+          strategy: {}
+          template:
+            metadata:
+              creationTimestamp: null
+              labels:
+                app: nginx-deploy
+            spec:
+              containers:
+              - image: nginx:1.16
+                name: nginx
+      ```
 
-  ```
-     kubectl create -f deploy.yaml --record
-     kubectl rollout history deployment nginx-deploy
-     kubectl set image deployment/nginx-deploy nginx=nginx:1.17 --record
-     kubectl rollout history deployment nginx-deploy
-  ```
+      ```
+         kubectl create -f deploy.yaml --record
+         kubectl rollout history deployment nginx-deploy
+         kubectl set image deployment/nginx-deploy nginx=nginx:1.17 --record
+         kubectl rollout history deployment nginx-deploy
+      ```
    </details>
   
   7. Create a new user called john. Grant him access to the cluster. John should have permission to create, list, get, update and delete pods in the development namespace . The private key exists in the location: /root/CKA/john.key and csr at /root/CKA/john.csr.
