@@ -14,7 +14,7 @@
 
      <details>
 
-        create vi redis.yaml 
+        create vi redis-storage.yaml 
        
            apiVersion: v1
            kind: Pod
@@ -40,28 +40,32 @@
      
      </details>
  
-  3. Create a new pod called super-user-pod with image busybox:1.28. Allow the pod to be able to set system_time.
+  3. Create a new pod called super-user-pod with image busybox:1.28. Allow the pod to be able to set system_time. The container should sleep for 4800 seconds.
 
      <details>
 
-     ```
-     apiVersion: v1
-     kind: Pod
-     metadata:
-       creationTimestamp: null
-       name: super-user-pod
-     spec:
-       containers:
-       - image: busybox:1.28
-         name: super-user-pod
-         command: ["sleep", "4800"]
-         securityContext:
-           capabilities:
-             add: ["SYS_TIME"]
-     ```
+       create and edit
+
+         k run super-user-pod --image=busybox:1.28 --dry-run=client -o yaml > super-user-pod.yaml
+       add the below yaml config:
+
+                 apiVersion: v1
+                 kind: Pod
+                 metadata:
+                   creationTimestamp: null
+                   name: super-user-pod
+                 spec:
+                   containers:
+                   - image: busybox:1.28
+                     name: super-user-pod
+                     command: ["sleep", "4800"]
+                     securityContext:
+                       capabilities:
+                         add: ["SYS_TIME"]
+     
      </details>
 
-  4. A pod definition file is created at /root/CKA/use-pv.yaml. Make use of this manifest file and mount the persistent volume called pv-1. Ensure the pod is running and the PV is bound.
+  5. A pod definition file is created at /root/CKA/use-pv.yaml. Make use of this manifest file and mount the persistent volume called pv-1. Ensure the pod is running and the PV is bound.
 
      <details>
      
@@ -100,7 +104,7 @@
      ```
      </details>
 
-  5. Create a new deployment called nginx-deploy, with image nginx:1.16 and 1 replica. Next upgrade the deployment to version 1.17 using rolling update.
+  6. Create a new deployment called nginx-deploy, with image nginx:1.16 and 1 replica. Next upgrade the deployment to version 1.17 using rolling update.
 
      <details>
  
@@ -147,7 +151,7 @@
      ```
      </details>
   
-  6. Create a new user called john. Grant him access to the cluster. John should have permission to create, list, get, update and delete pods in the development namespace . The private key exists in the location: /root/CKA/john.key and csr at /root/CKA/john.csr.
+  7. Create a new user called john. Grant him access to the cluster. John should have permission to create, list, get, update and delete pods in the development namespace . The private key exists in the location: /root/CKA/john.key and csr at /root/CKA/john.csr.
 
      <details>
  
@@ -176,7 +180,7 @@
   
      </details>
  
-  7. Create a nginx pod called nginx-resolver using image nginx, expose it internally with a service called nginx-resolver-service. Test that you are able to look up the service and pod names from within the cluster. Use the image: busybox:1.28 for dns lookup. Record results in /root/CKA/nginx.svc and /root/CKA/nginx.pod
+  8. Create a nginx pod called nginx-resolver using image nginx, expose it internally with a service called nginx-resolver-service. Test that you are able to look up the service and pod names from within the cluster. Use the image: busybox:1.28 for dns lookup. Record results in /root/CKA/nginx.svc and /root/CKA/nginx.pod
 
      <details>
  
@@ -195,7 +199,7 @@
  
      </details>
 
-  8. Create a static pod on node01 called nginx-critical with image nginx and make sure that it is recreated/restarted automatically in case of a failure.
+  9. Create a static pod on node01 called nginx-critical with image nginx and make sure that it is recreated/restarted automatically in case of a failure.
 
      <details>
  
