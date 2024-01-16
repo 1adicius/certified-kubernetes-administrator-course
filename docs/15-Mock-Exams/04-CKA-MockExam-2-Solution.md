@@ -180,7 +180,7 @@
      usages:
      - digital signature
      - key encipherment
-    - client auth
+     - client auth
        ```
  
       ```
