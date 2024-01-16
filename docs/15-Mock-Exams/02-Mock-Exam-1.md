@@ -49,35 +49,7 @@
   6. Create a deployment named hr-web-app using the image kodekloud/webapp-color with 2 replicas.
 
      <details>
-
-      ```
-      apiVersion: apps/v1
-      kind: Deployment
-      metadata:
-        creationTimestamp: null
-        labels:
-          app: hr-web-app
-        name: hr-web-app
-      spec:
-        replicas: 2
-        selector:
-          matchLabels:
-            app: hr-web-app
-        strategy: {}
-        template:
-          metadata:
-            creationTimestamp: null
-            labels:
-              app: hr-web-app
-          spec:
-            containers:
-            - image: kodekloud/webapp-color
-              name: webapp-color
-              resources: {}
-      status: {}
-      ```
       
-      In v1.19, we can add `--replicas` flag with `kubectl create deployment` command:
       ```
       kubectl create deployment hr-web-app --image=kodekloud/webapp-color --replicas=2
       ```
