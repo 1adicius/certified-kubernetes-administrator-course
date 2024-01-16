@@ -36,7 +36,7 @@
           volumes:
           - name: redis-storage
             emptyDir: {}
-        status: {}
+         status: {}
      
      </details>
  
