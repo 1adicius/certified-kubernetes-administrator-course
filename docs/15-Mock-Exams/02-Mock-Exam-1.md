@@ -174,7 +174,7 @@
       <details>
 
      
-  create below PV: 
+        create below PV use `vi pv.yaml` :
        
            apiVersion: v1
            kind: PersistentVolume
@@ -188,5 +188,5 @@
              hostPath:
                  path: /pv/data-analytics
     
-       </details>
+      </details>
        
