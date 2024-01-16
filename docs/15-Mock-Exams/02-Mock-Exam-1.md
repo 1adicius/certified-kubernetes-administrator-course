@@ -149,30 +149,14 @@
   10. Expose the hr-web-app as service hr-web-app-service application on port 30082 on the nodes on the cluster.
 
       <details>
+        
+          k expose deploy hr-web-app --name=hr-web-app-service --type NodePort --port 8080
+        go to the svc and edit the `nodePort: 30082`
 
-      ```
-      apiVersion: v1
-      kind: Service
-      metadata:
-        creationTimestamp: null
-        labels:
-          app: hr-web-app
-        name: hr-web-app-service
-      spec:
-        ports:
-        - port: 8080
-          protocol: TCP
-          targetPort: 8080
-          nodePort: 30082
-        selector:
-          app: hr-web-app
-        type: NodePort
-      status:
-        loadBalancer: {}
-      ```
+          k edit svc hr-web-app-service
       </details>
 
-  11. Use JSON PATH query to retrieve the osImages of all the nodes and store it in a file /opt/outputs/nodes_os_x43kj56.txt.
+  12. Use JSON PATH query to retrieve the osImages of all the nodes and store it in a file /opt/outputs/nodes_os_x43kj56.txt.
 
       <details>
 
@@ -181,7 +165,7 @@
       ```
       </details>
 
-  12. Create a Persistent Volume with the given specification: -
+  13. Create a Persistent Volume with the given specification: -
       <br>Volume name: pv-analytics</br>
       <br>Storage: 100Mi</br>
       <br>Access mode: ReadWriteMany</br>
