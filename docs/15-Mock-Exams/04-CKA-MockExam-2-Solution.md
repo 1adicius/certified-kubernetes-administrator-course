@@ -125,25 +125,25 @@
      ```
      kubectl create deployment nginx-deploy --image=nginx:1.16 --dry-run=client -o yaml > deploy.yaml
    
-     apiVersion: apps/v1
-     kind: Deployment
-     metadata:
-       name: nginx-deploy
-     spec:
-       replicas: 1
-       selector:
-         matchLabels:
-           app: nginx-deploy
-       strategy: {}
-       template:
-         metadata:
-           creationTimestamp: null
-           labels:
-             app: nginx-deploy
-         spec:
-           containers:
-           - image: nginx:1.16
-             name: nginx
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: nginx-deploy
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: nginx-deploy
+      strategy: {}
+      template:
+        metadata:
+          creationTimestamp: null
+          labels:
+            app: nginx-deploy
+        spec:
+          containers:
+          - image: nginx:1.16
+            name: nginx
      ```
      
      ```
