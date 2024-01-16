@@ -109,9 +109,9 @@
 
   6. Create a new deployment called nginx-deploy, with image nginx:1.16 and 1 replica. Next upgrade the deployment to version 1.17 using rolling update.
 
-   <details>
+        <details>
     
-     For Kubernetes Version <=1.17
+  For Kubernetes Version <=1.17
  
   ```
      kubectl create deployment nginx-deploy --image=nginx:1.16 --replicas=1
@@ -120,9 +120,9 @@
      kubectl rollout history deployment nginx-deploy
   ```
  
-     For Kubernetes Version >1.17
+  For Kubernetes Version >1.17
  
-   ```
+  ```
      kubectl create deployment nginx-deploy --image=nginx:1.16 --dry-run=client -o yaml > deploy.yaml
    
     apiVersion: apps/v1
