@@ -110,11 +110,11 @@
   6. Create a new deployment called nginx-deploy, with image nginx:1.16 and 1 replica. Next upgrade the deployment to version 1.17 using rolling update.
 
      <details>
- 
+    
      For Kubernetes Version <=1.17
  
      ```
-     kubectl run nginx-deploy --image=nginx:1.16 --replicas=1 --record
+     kubectl create deployment nginx-deploy --image=nginx:1.16 --replicas=1
      kubectl rollout history deployment nginx-deploy
      kubectl set image deployment/nginx-deploy nginx=nginx:1.17 --record
      kubectl rollout history deployment nginx-deploy
@@ -157,7 +157,18 @@
   7. Create a new user called john. Grant him access to the cluster. John should have permission to create, list, get, update and delete pods in the development namespace . The private key exists in the location: /root/CKA/john.key and csr at /root/CKA/john.csr.
 
      <details>
- 
+
+     run the command and create `vi john-csr.yaml`
+
+     ```
+     cd /root/CKA
+     ```
+     to create request run the command below, after that copy and paste the value to the yaml file.
+
+     ```
+     cat john-csr.yaml | base64 | tr -d "\n"
+     ```
+     
      ```
       apiVersion: certificates.k8s.io/v1
       kind: CertificateSigningRequest
@@ -183,10 +194,10 @@
   
      </details>
  
-  8. Create a nginx pod called nginx-resolver using image nginx, expose it internally with a service called nginx-resolver-service. Test that you are able to look up the service and pod names from within the cluster. Use the image: busybox:1.28 for dns lookup. Record results in /root/CKA/nginx.svc and /root/CKA/nginx.pod
+  9. Create a nginx pod called nginx-resolver using image nginx, expose it internally with a service called nginx-resolver-service. Test that you are able to look up the service and pod names from within the cluster. Use the image: busybox:1.28 for dns lookup. Record results in /root/CKA/nginx.svc and /root/CKA/nginx.pod
 
      <details>
- 
+       
      ```
      kubectl run nginx-resolver --image=nginx
      kubectl expose pod nginx-resolver --name=nginx-resolver-service --port=80 --target-port=80 --type=ClusterIP
@@ -202,7 +213,7 @@
  
      </details>
 
-  9. Create a static pod on node01 called nginx-critical with image nginx and make sure that it is recreated/restarted automatically in case of a failure.
+  11. Create a static pod on node01 called nginx-critical with image nginx and make sure that it is recreated/restarted automatically in case of a failure.
 
      <details>
  
