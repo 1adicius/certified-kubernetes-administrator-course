@@ -103,7 +103,7 @@
        - name: mypod
          persistentVolumeClaim:
            claimName: my-pvc
-      status: {}
+     status: {}
      ```
      </details>
 
