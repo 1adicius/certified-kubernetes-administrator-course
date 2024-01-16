@@ -49,19 +49,19 @@
          k run super-user-pod --image=busybox:1.28 --dry-run=client -o yaml > super-user-pod.yaml
        add the below yaml config:
 
-                 apiVersion: v1
-                 kind: Pod
-                 metadata:
-                   creationTimestamp: null
-                   name: super-user-pod
-                 spec:
-                   containers:
-                   - image: busybox:1.28
-                     name: super-user-pod
-                     command: ["sleep", "4800"]
-                     securityContext:
-                       capabilities:
-                         add: ["SYS_TIME"]
+         apiVersion: v1
+         kind: Pod
+         metadata:
+           creationTimestamp: null
+           name: super-user-pod
+         spec:
+           containers:
+           - image: busybox:1.28
+             name: super-user-pod
+             command: ["sleep", "4800"]
+             securityContext:
+               capabilities:
+                 add: ["SYS_TIME"]
      
      </details>
 
