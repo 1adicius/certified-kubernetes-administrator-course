@@ -68,6 +68,7 @@
   5. A pod definition file is created at /root/CKA/use-pv.yaml. Make use of this manifest file and mount the persistent volume called pv-1. Ensure the pod is running and the PV is bound.
 
      <details>
+     create a pvc first vi pvc.yaml
      
      ```
      apiVersion: v1
@@ -81,6 +82,7 @@
          requests:
            storage: 10Mi      
      ```
+     edit and create the file `/root/CKA/use-pv.yaml`
     
      ```
      apiVersion: v1
@@ -101,6 +103,7 @@
        - name: mypod
          persistentVolumeClaim:
            claimName: my-pvc
+      status: {}
      ```
      </details>
 
