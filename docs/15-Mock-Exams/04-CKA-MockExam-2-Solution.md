@@ -109,16 +109,16 @@
 
   6. Create a new deployment called nginx-deploy, with image nginx:1.16 and 1 replica. Next upgrade the deployment to version 1.17 using rolling update.
 
-     <details>
+<details>
     
      For Kubernetes Version <=1.17
  
-     ```
+  ```
      kubectl create deployment nginx-deploy --image=nginx:1.16 --replicas=1
      kubectl rollout history deployment nginx-deploy
      kubectl set image deployment/nginx-deploy nginx=nginx:1.17 --record
      kubectl rollout history deployment nginx-deploy
-     ```
+  ```
  
      For Kubernetes Version >1.17
  
@@ -146,14 +146,13 @@
             name: nginx
   ```
 
-
   ```
      kubectl create -f deploy.yaml --record
      kubectl rollout history deployment nginx-deploy
      kubectl set image deployment/nginx-deploy nginx=nginx:1.17 --record
      kubectl rollout history deployment nginx-deploy
   ```
-  </details>
+</details>
   
   7. Create a new user called john. Grant him access to the cluster. John should have permission to create, list, get, update and delete pods in the development namespace . The private key exists in the location: /root/CKA/john.key and csr at /root/CKA/john.csr.
 
