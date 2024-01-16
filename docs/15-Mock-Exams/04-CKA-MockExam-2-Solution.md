@@ -6,7 +6,7 @@
      <details>
 
      ```
-     ETCDCTL_API=3 etcdctl snapshot save --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --endpoints=127.0.0.1:2379 /opt/etcd-backup.db
+    ETCDCTL_API=3 etcdctl snapshot save --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --endpoints=127.0.0.1:2379 /opt/etcd-backup.db
      ```
      </details>
 
@@ -16,27 +16,27 @@
 
         create vi redis-storage.yaml 
        
-           apiVersion: v1
-           kind: Pod
-           metadata:
-              creationTimestamp: null
-              labels:
-                run: redis-storage
-              name: redis-storage
-           spec:
-            containers:
-            - image: redis:alpine
-              name: redis-storage
-              resources: {}
-              volumeMounts:
-              - name: redis-storage
-                mountPath: /data/redis
-            dnsPolicy: ClusterFirst
-            restartPolicy: Always
-            volumes:
+         apiVersion: v1
+         kind: Pod
+         metadata:
+            creationTimestamp: null
+            labels:
+              run: redis-storage
+            name: redis-storage
+         spec:
+          containers:
+          - image: redis:alpine
+            name: redis-storage
+            resources: {}
+            volumeMounts:
             - name: redis-storage
-              emptyDir: {}
-          status: {}
+              mountPath: /data/redis
+          dnsPolicy: ClusterFirst
+          restartPolicy: Always
+          volumes:
+          - name: redis-storage
+            emptyDir: {}
+        status: {}
      
      </details>
  
