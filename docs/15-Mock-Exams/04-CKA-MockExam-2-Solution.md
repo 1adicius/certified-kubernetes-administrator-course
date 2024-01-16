@@ -1,7 +1,7 @@
 # Mock Exam 2 Solution
   
   
-  1. Run the below command for solution:
+  1. Take a backup of the etcd cluster and save it to /opt/etcd-backup.db
 
      <details>
 
@@ -10,37 +10,36 @@
      ```
      </details>
 
-  2. Run the below command for solution:
+  2. Create a Pod called redis-storage with image: redis:alpine with a Volume of type emptyDir that lasts for the life of the Pod.
 
      <details>
- 
-     ```
-     apiVersion: v1
-     kind: Pod
-     metadata:
-        creationTimestamp: null
-        labels:
-          run: redis-storage
-        name: redis-storage
-     spec:
-      volumes:
-      - name: redis-storage
-        emptyDir: {}
-      
-      containers:
-      - image: redis:alpine
-        name: redis-storage
-        resources: {}
-        volumeMounts:
-        - name: redis-storage
-          mountPath: /data/redis
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-     status: {}
-     ```
+
+       
+           apiVersion: v1
+           kind: Pod
+           metadata:
+              creationTimestamp: null
+              labels:
+                run: redis-storage
+              name: redis-storage
+           spec:
+            containers:
+            - image: redis:alpine
+              name: redis-storage
+              resources: {}
+              volumeMounts:
+              - name: redis-storage
+                mountPath: /data/redis
+            dnsPolicy: ClusterFirst
+            restartPolicy: Always
+            volumes:
+            - name: redis-storage
+              emptyDir: {}
+          status: {}
+     
      </details>
  
-  3. Run the below command for solution:
+  3. Create a new pod called super-user-pod with image busybox:1.28. Allow the pod to be able to set system_time.
 
      <details>
 
@@ -61,7 +60,7 @@
      ```
      </details>
 
-  4. Run the below command for solution:
+  4. A pod definition file is created at /root/CKA/use-pv.yaml. Make use of this manifest file and mount the persistent volume called pv-1. Ensure the pod is running and the PV is bound.
 
      <details>
      
@@ -100,7 +99,7 @@
      ```
      </details>
 
-  5. Run the below command for solution:
+  5. Create a new deployment called nginx-deploy, with image nginx:1.16 and 1 replica. Next upgrade the deployment to version 1.17 using rolling update.
 
      <details>
  
@@ -147,7 +146,7 @@
      ```
      </details>
   
-  6. Run the below command for solution:
+  6. Create a new user called john. Grant him access to the cluster. John should have permission to create, list, get, update and delete pods in the development namespace . The private key exists in the location: /root/CKA/john.key and csr at /root/CKA/john.csr.
 
      <details>
  
@@ -176,7 +175,7 @@
   
      </details>
  
-  7. Run the below command for solution:
+  7. Create a nginx pod called nginx-resolver using image nginx, expose it internally with a service called nginx-resolver-service. Test that you are able to look up the service and pod names from within the cluster. Use the image: busybox:1.28 for dns lookup. Record results in /root/CKA/nginx.svc and /root/CKA/nginx.pod
 
      <details>
  
@@ -195,7 +194,7 @@
  
      </details>
 
-  8. Run the below command for solution:
+  8. Create a static pod on node01 called nginx-critical with image nginx and make sure that it is recreated/restarted automatically in case of a failure.
 
      <details>
  
