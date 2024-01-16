@@ -122,7 +122,7 @@
  
      For Kubernetes Version >1.17
  
-     ```
+   ```
      kubectl create deployment nginx-deploy --image=nginx:1.16 --dry-run=client -o yaml > deploy.yaml
    
     apiVersion: apps/v1
@@ -144,14 +144,15 @@
           containers:
           - image: nginx:1.16
             name: nginx
-     ```
-     
-     ```
+  ```
+
+
+  ```
      kubectl create -f deploy.yaml --record
      kubectl rollout history deployment nginx-deploy
      kubectl set image deployment/nginx-deploy nginx=nginx:1.17 --record
      kubectl rollout history deployment nginx-deploy
-     ```
+  ```
   </details>
   
   7. Create a new user called john. Grant him access to the cluster. John should have permission to create, list, get, update and delete pods in the development namespace . The private key exists in the location: /root/CKA/john.key and csr at /root/CKA/john.csr.
