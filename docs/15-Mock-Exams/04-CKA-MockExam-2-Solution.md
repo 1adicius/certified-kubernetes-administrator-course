@@ -152,7 +152,7 @@
      kubectl set image deployment/nginx-deploy nginx=nginx:1.17 --record
      kubectl rollout history deployment nginx-deploy
      ```
-     </details>
+  </details>
   
   7. Create a new user called john. Grant him access to the cluster. John should have permission to create, list, get, update and delete pods in the development namespace . The private key exists in the location: /root/CKA/john.key and csr at /root/CKA/john.csr.
 
