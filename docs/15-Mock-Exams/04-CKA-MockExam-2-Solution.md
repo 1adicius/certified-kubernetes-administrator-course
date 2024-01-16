@@ -215,31 +215,31 @@
 
   11. Create a static pod on node01 called nginx-critical with image nginx and make sure that it is recreated/restarted automatically in case of a failure.
 
-  <details>
+      <details>
 
-      kubectl run nginx-critical --image=nginx --dry-run=client -o yaml > static.yaml
-      
-      cat static.yaml - Copy the contents of this file.
-      
-      kubectl get nodes -o wide
-      ssh node01 
-      OR
-      ssh <IP of node01>
-      
-      Check if static-pod directory is present which is /etc/kubernetes/manifests if not then create it.
-      mkdir -p /etc/kubernetes/manifests
-      
-      Paste the contents of the file(static.yaml) copied in the first step to file nginx-critical.yaml.
-      
-      Move/copy the nginx-critical.yaml to path /etc/kubernetes/manifests/
-      
-      cp nginx-critical.yaml /etc/kubernetes/manifests
-      
-      Go back to master node
-      
-      kubectl get pods 
+          kubectl run nginx-critical --image=nginx --dry-run=client -o yaml > static.yaml
+          
+          cat static.yaml - Copy the contents of this file.
+          
+          kubectl get nodes -o wide
+          ssh node01 
+          OR
+          ssh <IP of node01>
+          
+          Check if static-pod directory is present which is /etc/kubernetes/manifests if not then create it.
+          mkdir -p /etc/kubernetes/manifests
+          
+          Paste the contents of the file(static.yaml) copied in the first step to file nginx-critical.yaml.
+          
+          Move/copy the nginx-critical.yaml to path /etc/kubernetes/manifests/
+          
+          cp nginx-critical.yaml /etc/kubernetes/manifests
+          
+          Go back to master node
+          
+          kubectl get pods 
  
-  </details>
+      </details>
 
   
 
