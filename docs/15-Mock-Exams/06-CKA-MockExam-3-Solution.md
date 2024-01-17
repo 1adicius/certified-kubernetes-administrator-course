@@ -169,9 +169,11 @@
 9. Run the below command for solution:
    
      <details>
-     
+      
+      Run the commands below:
      ```
-     sed -i 's/kube-contro1ler-manager/kube-controller-manager/g' kube-controller-manager.yaml
+     kubectl scale deploy nginx-deploy --replicas=3
+     sed -i 's/kube-contro1ler-manager/kube-controller-manager/g' /etc/kubernetes/manifests/kube-controller-manager.yaml
      ```
      </details>
 
