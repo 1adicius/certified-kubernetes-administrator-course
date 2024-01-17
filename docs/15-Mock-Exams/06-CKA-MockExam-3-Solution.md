@@ -75,9 +75,9 @@ Next, create a pod called pvviewer with the image: redis and serviceAccount: pvv
  
 4. Create a Pod called non-root-pod , image: redis:alpine
 
-runAsUser: 1000
+     runAsUser: 1000
 
-fsGroup: 2000
+     fsGroup: 2000
  
      <details>
      
