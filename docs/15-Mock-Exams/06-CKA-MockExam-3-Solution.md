@@ -1,7 +1,8 @@
 # Mock Exam 3 Solution
 
 
-1. Run the below command for solution: 
+1. Create a new service account with the name pvviewer. Grant this Service account access to list all PersistentVolumes in the cluster by creating an appropriate cluster role called pvviewer-role and ClusterRoleBinding called pvviewer-role-binding.
+Next, create a pod called pvviewer with the image: redis and serviceAccount: pvviewer in the default namespace.
 
      <details>
 
@@ -28,7 +29,7 @@
      ```
      </details>
 
-2. Run the below command for solution: 
+2. List the InternalIP of all nodes of the cluster. Save the result to a file /root/CKA/node_ips.
 
      <details>
  
@@ -37,7 +38,16 @@
      ```
      </details>
  
-3. Run the below command for solution:  
+3. Create a pod called multi-pod with two containers.
+Container 1, name: alpha, image: nginx
+Container 2: name: beta, image: busybox, command: sleep 4800
+
+Environment Variables:
+container 1:
+name: alpha
+
+Container 2:
+name: beta
  
      <details>
  
@@ -63,7 +73,11 @@
      ```
      </details>
  
-4. Run the below command for solution:
+4. Create a Pod called non-root-pod , image: redis:alpine
+
+runAsUser: 1000
+
+fsGroup: 2000
  
      <details>
      
@@ -82,7 +96,8 @@
      ```
      </details>
  
-5. Run the below command for solution:  
+5. We have deployed a new pod called np-test-1 and a service called np-test-service. Incoming connections to this service are not working. Troubleshoot and fix it.
+Create NetworkPolicy, by the name ingress-to-nptest that allows incoming connections to the service over port 80.
  
      <details>
  
@@ -105,7 +120,7 @@
      ```
      </details>
    
-6. Run the below command for solution: 
+6. Taint the worker node node01 to be Unschedulable. Once done, create a pod called dev-redis, image redis:alpine, to ensure workloads are not scheduled to this worker node. Finally, create a new pod called prod-redis and image: redis:alpine with toleration to be scheduled on node01.
  
      <details>
  
@@ -143,7 +158,8 @@
      ```
      </details>
  
-7. Run the below command for solution: 
+7. Create a pod called hr-pod in hr namespace belonging to the production environment and frontend tier .
+image: redis:alpine
  
      <details>
  
@@ -153,7 +169,7 @@
      ```
      </details>
 
-8. Run the below command for solution:
+8. A kubeconfig file called super.kubeconfig has been created under /root/CKA. There is something wrong with the configuration. Troubleshoot and fix it.
 
      <details>
 
@@ -166,7 +182,7 @@
      ```
      </details>
 
-9. Run the below command for solution:
+9. We have created a new deployment called nginx-deploy. scale the deployment to 3 replicas. Has the replica's increased? Troubleshoot the issue and fix it.
    
      <details>
       
