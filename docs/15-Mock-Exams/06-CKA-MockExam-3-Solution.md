@@ -39,15 +39,15 @@ Next, create a pod called pvviewer with the image: redis and serviceAccount: pvv
      </details>
  
 3. Create a pod called multi-pod with two containers.
-Container 1, name: alpha, image: nginx
-Container 2: name: beta, image: busybox, command: sleep 4800
+     Container 1, name: alpha, image: nginx
+     Container 2: name: beta, image: busybox, command: sleep 4800
 
-Environment Variables:
-container 1:
-name: alpha
+     Environment Variables:
+     container 1:
+     name: alpha
 
-Container 2:
-name: beta
+     Container 2:
+     name: beta          
  
      <details>
  
